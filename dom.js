@@ -34,10 +34,10 @@ for(var i = 0; i< li.length; i++){
     
     li[i].style.fontWeight = 'bold';
 }*/
-var item= document.querySelector('.list-group-item:nth-child(2)');
+/*var item= document.querySelector('.list-group-item:nth-child(2)');
 item.style.background ="green";
 var item1= document.querySelector('.list-group-item:nth-child(3)');
-item1.style.display = 'none';
+item1.style.display = 'none';*/
 /*
 //var titles = document.querySelectorAll('.title');
 var odd = document.querySelectorAll('li:nth-child(odd)');
@@ -46,6 +46,52 @@ for (var i = 0 ; i < odd.length;i++){
 }
 var seconditem = document.querySelectorAll('li')
 seconditem[1].style.color = 'green';*/
+
+/*var itemlist = document.querySelector('#items');
+console.log(itemlist.parentNode);
+itemlist.parentNode.style.backgroundColor = 'red';
+
+console.log(itemlist.parentNode.parentNode.parentNode);*/
+
+/*var itemlist = document.querySelector('#items');
+console.log(itemlist.parentElement);
+itemlist.parentElement.style.backgroundColor = 'red';
+
+console.log(itemlist.parentElement);*/
+var itemlist = document.querySelector('#items')
+//console.log(itemlist.childNodes);
+console.log(itemlist.children);
+console.log(itemlist.children[1]);
+console.log(itemlist.firstChild);
+console.log(itemlist.firstElementChild);
+console.log(itemlist.lastChild);
+console.log(itemlist.lastElementChild);
+console.log(itemlist.nextSibling);
+console.log(itemlist.nextElementSibling);
+console.log(itemlist.previousSibling);
+console.log(itemlist.previousElementSibling);
+
+
+var newDiv = document.createElement('div');
+newDiv.className = 'hello';
+newDiv.id = 'hello1';
+newDiv.setAttribute('title','HELLP DOV');
+var newDivText = document.createTextNode('Hello World');
+newDiv.append(newDivText);
+console.log(newDiv);
+
+var cont = document.querySelector('header .container');
+var h1 = document.querySelector('header h1');
+cont.insertBefore(newDiv,h1);
+
+var cont1 = document.querySelector('.list-group-item');
+
+cont1.insertBefore(newDiv,cont1[0]);
+
+
+
+
+
 
 
 
