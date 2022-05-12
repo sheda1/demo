@@ -18,12 +18,21 @@ headerTitle.innerText = "bye";*/
 //headerTitle.innerHTML = '<h3>Hello<h3>';
 //header.style.borderBottom = 'solid 3px #000';
 
-var items = document.getElementsByClassName('list-group-item');
+/*var items = document.getElementsByClassName('list-group-item');
 console.log(items);
 
 for(var i = 0; i< items.length; i++){
     items[i].style.color = "green";
     items[i].style.fontWeight = 'bold';
+}*/
+
+var li = document.getElementsByTagName('li');
+console.log(li);
+li[2].style.color = "green";
+
+for(var i = 0; i< li.length; i++){
+    
+    li[i].style.fontWeight = 'bold';
 }
 
 
