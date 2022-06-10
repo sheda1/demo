@@ -36,26 +36,42 @@ const name = document.querySelector('#name');
 
 const email = document.querySelector('#email');
 const msg = document.querySelector('.msg');
-const user = document.querySelector('#user');
+const users = document.querySelector('#users');
 
 myForm.addEventListener('submit',onSubmit);
+
 function onSubmit(e){
     e.preventDefault();
+    const name1 = name.value;
+    console.log(name.value);
+    const email1 = email.value;
+    const obj = {
+      name1,
+      email1
+    }
+    axios.post("https://crudcrud.com/api/0ccc167de3f54db0bc1ef74dd92dc823/appointmentData",obj)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((err) => {
+      document.body.innerHTML = document.body.innerHTML + '<h4> something went wrong</h4>'
+    });
     if(name.value === '' || email.value === ''){
       msg.classList.add('error');
        msg.innerHTML = 'enter all fields';
        setTimeout(() => msg.remove(),3000);
     }else {
       const li = document.createElement('li');
-      li.appendChild(document.createTextNode(`${name.value} : ${email.vale}`));
+      li.appendChild(document.createTextNode(`${name.value} : ${email.value}`));
       users.appendChild(li);
       name.value = "";
       email.value = "";
     }
-   
-}
+    
+  }
+  
 
-
+ 
 
 
 
