@@ -40,6 +40,50 @@ const users = document.querySelector('#users');
 
 myForm.addEventListener('submit',onSubmit);
 
+window.addEventListener("DOMContentLoaded",() =>{
+  axios.get("https://crudcrud.com/api/6b90a602889b499685c7f944a33dc35c/appointmentdata")
+  .then((response) =>{
+    console.log(response.data);
+    for( var i = 0; i < response.data.length; i++){
+/*
+      const li = document.createElement('li');
+      console.log(response.data[i] + i);
+      li.appendChild(document.createTextNode(response.data[i].name1 + " " + response.data[i].email1));
+     //li.appendChild(document.body.innerHTML(`<button>Delete</button>`)); //document.body.innerHTML = '
+    users.appendChild(li);
+    */
+   const parentNode = document.getElementById('users');
+   const childHTML = `<li> ${response.data[i].name1}   ${response.data[i].email1}
+                      <button onClick = deleteUser(${response.data[i]._id})> DeleteUser </button>
+                      <button onClick = EditUser(${response.data[i]})> Edit </button>
+                      </li>`
+     parentNode.innerHTML = parentNode.innerHTML + childHTML;                 
+
+    }
+  })
+  .catch((err) => {
+    document.body.innerHTML = document.body.innerHTML + '<h4> something went wrong</h4>';
+  })
+  
+})
+function removeUserFromScreen(userId){
+  const parentNode = document.getElementById('users');
+  const childDelete = document.getElementById(userId);
+  if (childDelete){
+    parentNode.removeChild(childDelete);
+  }
+}
+function deleteUser(userId){
+   console.log(userId);
+   axios.deleteUser(`https://crudcrud.com/api/6b90a602889b499685c7f944a33dc35c/appointmentdata/${userId}`) 
+   .then((response) =>{
+        removeUserFromScreen(userId);
+   }).catch((err) => {
+    document.body.innerHTML = document.body.innerHTML + '<h4> something went wrong</h4>'
+   })
+
+}
+
 function onSubmit(e){
     e.preventDefault();
     const name1 = name.value;
@@ -49,13 +93,13 @@ function onSubmit(e){
       name1,
       email1
     }
-    axios.post("https://crudcrud.com/api/0ccc167de3f54db0bc1ef74dd92dc823/appointmentData",obj)
+    axios.post("https://crudcrud.com/api/6b90a602889b499685c7f944a33dc35c/appointmentdata",obj)
     .then((response) => {
       console.log(response)
     })
     .catch((err) => {
       document.body.innerHTML = document.body.innerHTML + '<h4> something went wrong</h4>'
-    });
+    });/*
     if(name.value === '' || email.value === ''){
       msg.classList.add('error');
        msg.innerHTML = 'enter all fields';
@@ -67,7 +111,7 @@ function onSubmit(e){
       name.value = "";
       email.value = "";
     }
-    
+*/
   }
   
 
